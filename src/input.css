@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+
+.fade {
+    animation: forwards 1s ease fade;
+}
+
+
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

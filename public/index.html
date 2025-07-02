@@ -10,8 +10,52 @@
 
 <body dir="rtl" class="">
 
+    <section id="loading" class="w-full h-svh fixed top-0 left-0 bg-white flex flex-col items-center justify-between py-20 z-50">
+        <h2 class="text-3xl font-bold text-sky-700">حافظ کوچولو</h2>
+        <img class="" src="./assets/images/original-cda06cf84a4fb6770d303a55f01caab4.gif" alt="loading">
+        <span id="loadingHint" class="invisible text-lg">لطفا صبر کنید</span>
+        <span class="text-center opacity-50 w-full inline-block">ساخته شده توسط :<br> محمد رضا جبار زاده</span>
+    </section>
 
 
+
+
+
+    <section id="menu" class="w-full h-svh bg-white flex flex-col items-center justify-between py-20">
+
+    </section>
+
+
+    <script>
+        const loading = document.getElementById('loading');
+        const loadingTime = 1;
+        const loadingHint = document.getElementById('loadingHint');
+
+
+
+
+
+        function MANAGE_loading() {
+            setTimeout(() => {
+                loadingHint.textContent = 'لطفا کلیک کنید';
+                loadingHint.classList.add('animate-bounce');
+                loadingHint.classList.remove('invisible');
+                document.addEventListener('click', () => {
+                    loginVideo.play();
+                    loading.classList.add('fade');
+                    setTimeout(() => {
+                        loading.remove();
+                    }, 1000);
+                });
+            }, loadingTime);
+        }
+
+
+
+
+
+        MANAGE_loading();
+    </script>
 </body>
 
 </html>
