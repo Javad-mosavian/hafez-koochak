@@ -17,7 +17,18 @@
         <span class="text-center opacity-50 w-full inline-block">ساخته شده توسط :<br> محمد رضا جبار زاده</span>
     </section>
 
-
+    <section id="login" class="w-full h-svh fixed top-0 left-0 bg-white flex flex-col items-center justify-between py-20">
+        <h2 class="text-3xl font-bold text-sky-700">حافظ کوچولو</h2>
+        <video id="loginVideo" src="./assets/images/Muslim woman reading quran.mp4" loop autoplay></video>
+        <div class="w-full max-w-sm min-w-[200px] px-10">
+            <div class="relative">
+                <input id="username" type="text" autocomplete="off" class=" w-full text-center bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-16 py-3.5 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="نام شما چیست؟" />
+                <button onclick="GET_name(window.username)" class="absolute right-1 top-1 rounded bg-slate-800 py-2 px-2.5 border border-transparent text-center text-base text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+                    ادامه
+                </button>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -30,7 +41,8 @@
         const loading = document.getElementById('loading');
         const loadingTime = 1;
         const loadingHint = document.getElementById('loadingHint');
-
+        const login = document.getElementById('login');
+        const loginVideo = document.getElementById('loginVideo');
 
 
 
@@ -50,7 +62,13 @@
             }, loadingTime);
         }
 
-
+        function GET_name(username) {
+            localStorage.setItem('username', username);
+            login.classList.add('fade');
+            setTimeout(() => {
+                login.remove();
+            }, 1000);
+        }
 
 
 
