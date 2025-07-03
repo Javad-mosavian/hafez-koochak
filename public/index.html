@@ -10,15 +10,15 @@
 
 <body dir="rtl" class="">
 
-    <section id="loading" class="w-full h-svh fixed top-0 left-0 bg-white flex flex-col items-center justify-between py-20 z-50">
-        <h2 class="text-3xl font-bold text-sky-700">حافظ کوچولو</h2>
+    <!-- <section id="loading" class="w-full h-svh fixed top-0 left-0 bg-white flex flex-col items-center justify-between py-20 z-50">
+        <h2 class="text-3xl font-bold text-sky-600">حافظ کوچولو</h2>
         <img class="" src="./assets/images/original-cda06cf84a4fb6770d303a55f01caab4.gif" alt="loading">
-        <span id="loadingHint" class="invisible text-lg">لطفا صبر کنید</span>
-        <span class="text-center opacity-50 w-full inline-block">ساخته شده توسط :<br> محمد رضا جبار زاده</span>
+        <span id="loadingHint" class="invisible text-lg font-bold">لطفا صبر کنید</span>
+        <span class="text-center opacity-50 w-full inline-block text-sm">ساخته شده توسط :<br> محمد رضا جبار زاده</span>
     </section>
 
     <section id="login" class="w-full h-svh fixed top-0 left-0 bg-white flex flex-col items-center justify-between py-20">
-        <h2 class="text-3xl font-bold text-sky-700">حافظ کوچولو</h2>
+        <h2 class="text-3xl font-bold text-sky-600">حافظ کوچولو</h2>
         <video id="loginVideo" src="./assets/images/Muslim woman reading quran.mp4" loop autoplay></video>
         <div class="w-full max-w-sm min-w-[200px] px-10">
             <div class="relative">
@@ -28,14 +28,39 @@
                 </button>
             </div>
         </div>
+    </section> -->
+
+
+
+    <section id="menu" class="w-full h-svh bg-gradient-to-tr from-orange-500 to-sky-500 flex flex-col items-center justify-between p-8">
+        <header class="w-full flex items-center py-5 gap-3 ">
+            <img src="./assets/images/haji.svg" alt="">
+            <span class="text-white text-lg">javad</span>
+        </header>
+        <h2 class="text-3xl font-bold text-white">سوره حمد</h2>
+        <main class="grid grid-cols-3 gap-3 w-full h-80 rounded-2xl p-5">
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+            <a href="" class="size-20 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white flex items-center justify-center text-white cursor-pointer">1</a>
+        </main>
+        <span id="ayeh" class="text-sm text-white opacity-50 h-10 overflow-hidden"></span>
     </section>
 
+    <script type="module" src="./ayeh.js"></script>
+    <script type="module">
+        import { CREATE_ayeh } from './ayeh.js';
+        const ayehText = document.getElementById('ayeh');
 
-
-    <section id="menu" class="w-full h-svh bg-white flex flex-col items-center justify-between py-20">
-
-    </section>
-
+        CREATE_ayeh().then(ayah => {
+            ayehText.textContent = ayah;
+        });
+    </script>
 
     <script>
         const loading = document.getElementById('loading');
@@ -46,6 +71,13 @@
 
 
 
+        if (localStorage.getItem('username')) {
+            try {
+                login.remove();
+            } catch (error) {
+                null
+            }
+        }
 
         function MANAGE_loading() {
             setTimeout(() => {
@@ -63,10 +95,15 @@
         }
 
         function GET_name(username) {
-            localStorage.setItem('username', username);
+            let value = username.value;
+            localStorage.setItem('username', value);
             login.classList.add('fade');
             setTimeout(() => {
-                login.remove();
+                try {
+                    login.remove();
+                } catch (error) {
+                    throw error;
+                }
             }, 1000);
         }
 
